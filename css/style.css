@@ -17,12 +17,14 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    /* El fondo de puntos radiales */
     background-image: radial-gradient(circle, #2d2645 1px, transparent 1px);
     background-size: 20px 20px;
     position: relative;
     overflow-x: hidden;
 }
 
+/* El degradado en la parte inferior de la página */
 body::after {
     content: '';
     position: absolute;
