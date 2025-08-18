@@ -17,14 +17,12 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* El fondo de puntos radiales */
     background-image: radial-gradient(circle, #2d2645 1px, transparent 1px);
     background-size: 20px 20px;
     position: relative;
     overflow-x: hidden;
 }
 
-/* El degradado en la parte inferior de la página */
 body::after {
     content: '';
     position: absolute;
@@ -223,4 +221,25 @@ button.nav-link:hover {
 .discord-logo {
     width: 80px;
     height: 80px;
+}
+
+/* Nuevo estilo para el botón de '¡Comprar!' */
+.purchase-button {
+    background-color: var(--darker-bg);
+    border: 1px solid var(--border-purple);
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.purchase-button:hover {
+    background-color: var(--button-bg);
+    border-color: var(--accent-purple);
 }
