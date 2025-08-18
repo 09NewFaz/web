@@ -223,7 +223,6 @@ button.nav-link:hover {
     height: 80px;
 }
 
-/* Nuevo estilo para el botón de '¡Comprar!' */
 .purchase-button {
     background-color: var(--darker-bg);
     border: 1px solid var(--border-purple);
@@ -237,6 +236,7 @@ button.nav-link:hover {
     transition: all 0.3s ease;
     text-decoration: none;
     color: var(--text-color);
+    margin-top: 2rem;
 }
 
 .purchase-button:hover {
