@@ -255,3 +255,16 @@ button.nav-link:hover {
     background-color: var(--button-bg);
     border-color: var(--accent-purple);
 }
+
+.tables-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.tables-row .table-container {
+    /* Modificación aquí: */
+    flex: 1 1 calc(50% - 1rem); /* Esto hará que cada tabla ocupe aproximadamente el 50% del ancho, restando la mitad del gap */
+    min-width: 300px; /* Mantén un ancho mínimo para evitar que se hagan demasiado pequeñas */
+    max-width: calc(50% - 1rem); /* Asegura que no ocupen más del 50% */
+}
