@@ -172,6 +172,18 @@ button.nav-link:hover {
     color: #ffffff;
 }
 
+.tables-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.tables-row .table-container {
+    flex: 1;
+    min-width: 300px;
+}
+
 .table-container {
     background-color: var(--darker-bg);
     border-radius: 10px;
@@ -227,7 +239,7 @@ button.nav-link:hover {
     background-color: var(--darker-bg);
     border: 1px solid var(--border-purple);
     border-radius: 50px;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     font-size: 0.9rem;
     display: flex;
     align-items: center;
