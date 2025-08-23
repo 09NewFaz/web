@@ -172,17 +172,16 @@ button.nav-link:hover {
     color: #ffffff;
 }
 
-/* 🔹 Modificación para que los recuadros se ajusten */
 .tables-row {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 2rem;
-    flex-wrap: wrap; /* se acomodan en filas si no caben */
 }
 
-.tables-row > div {
-    flex: 1 1 250px; /* se ajustan al ancho disponible */
-    max-width: 400px; /* límite de estiramiento */
+.tables-row .table-container {
+    flex: 1;
+    min-width: 300px;
 }
 
 .table-container {
