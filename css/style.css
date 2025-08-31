@@ -177,14 +177,16 @@ button.nav-link:hover {
 .tables-row {
     display: flex;
     justify-content: center;
-    gap: 2rem;      /* espacio entre tablas */
-    flex-wrap: wrap; /* para pantallas pequeñas se bajan */
+    gap: 2rem; /* espacio entre tablas */
+    flex-wrap: wrap; /* permite que se bajen si es muy pequeño */
 }
 
 .tables-row .table-container {
-    flex: 1;
-    min-width: 300px;
-    max-width: 45%; /* no se estiren demasiado */
+    flex: 0 0 45%; /* cada tabla ocupa 45% del contenedor */
+    min-width: 280px; /* ancho mínimo para pantallas pequeñas */
+    background-color: var(--darker-bg);
+    border-radius: 10px;
+    padding: 1rem;
 }
 
 .table-container {
