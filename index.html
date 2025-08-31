@@ -4,82 +4,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NewFaz - Web</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">Bienvenido a NewFaz</h1>
-        <p class="subtitle">El lugar donde encuentras planes y servicios únicos</p>
 
-        <div class="nav">
-            <button class="nav-link" data-page="home">Inicio</button>
-            <button class="nav-link" data-page="planes">Planes</button>
-            <button class="nav-link" data-page="sobre">Sobre NewFaz</button>
-            <button class="nav-link" data-page="soporte">Soporte</button>
-        </div>
-
-        <!-- Página de inicio -->
-        <div id="home" class="page">
-            <h2>Inicio</h2>
-            <p>Explora nuestros servicios y descubre lo que NewFaz tiene para ti.</p>
-        </div>
-
-        <!-- Página de planes -->
-        <div id="planes" class="page">
-            <h2>Planes - Precios</h2>
-            <div class="tables-row">
-                <!-- Tabla de Traducción -->
-                <table>
-                    <caption>Traducción</caption>
-                    <thead>
-                        <tr>
-                            <th>Servicio</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>1 plugin</td><td>$2.000 CLP</td></tr>
-                        <tr><td>3 plugins</td><td>$5.000 CLP</td></tr>
-                        <tr><td>5 plugins</td><td>$8.000 CLP</td></tr>
-                        <tr><td>10 plugins</td><td>$15.000 CLP</td></tr>
-                    </tbody>
-                </table>
-
-                <!-- Tabla de Configuración -->
-                <table>
-                    <caption>Configuración de Modalidades</caption>
-                    <thead>
-                        <tr>
-                            <th>Modalidad</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Authme</td><td>$3.000 CLP</td></tr>
-                        <tr><td>Lobby</td><td>$7.000 CLP</td></tr>
-                        <tr><td>BoxPvP</td><td>$15.000 CLP</td></tr>
-                        <tr><td>Survival Clásico</td><td>$20.000 CLP</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <button class="back-btn" data-page="home">Volver</button>
-        </div>
-
-        <!-- Página sobre -->
-        <div id="sobre" class="page">
-            <h2>Sobre NewFaz</h2>
-            <p>NewFaz es un espacio creado para ofrecer traducciones de plugins y configuraciones personalizadas de modalidades de Minecraft.</p>
-            <button class="back-btn" data-page="home">Volver</button>
-        </div>
-
-        <!-- Página soporte -->
-        <div id="soporte" class="page">
-            <h2>Soporte</h2>
-            <p>Si necesitas ayuda, contáctanos a través de nuestro correo <strong>soporte@newfaz.com</strong></p>
-            <button class="back-btn" data-page="home">Volver</button>
+<main class="page-container">
+    <!-- HOME -->
+    <div id="home" class="page active">
+        <h1 class="main-title">NewFaz - Web</h1>
+        <p class="subtitle">
+            ¡Soy <span class="highlight">NewFaz</span>! Un configurador con más de 1 año de experiencia en
+            configuración de servidores o plugins. ¡Ve mis precios y te sorprenderás!
+        </p>
+        <div class="button-group">
+            <button class="nav-link" data-page="planes">
+                Planes <img src="https://img.icons8.com/material-rounded/24/ffffff/shopping-cart.png" alt="cart icon" class="icon">
+            </button>
+            <button class="nav-link" data-page="about">
+                Sobre NewFaz <img src="https://img.icons8.com/material-rounded/24/ffffff/user--v1.png" alt="user icon" class="icon">
+            </button>
+            <button class="nav-link" data-page="contacto">
+                Soporte <img src="https://img.icons8.com/material-rounded/24/ffffff/chat.png" alt="chat icon" class="icon">
+            </button>
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <!-- ABOUT -->
+    <div id="about" class="page">
+        <button class="nav-link back-button" data-page="home">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/less-than.png" alt="back arrow" class="back-arrow"> Volver
+        </button>
+        <h2>¡Sobre Mi!</h2>
+        <p>
+            Mi nombre es NewFaz y hace unos 2 años me metí en esto de
+            configuraciones de servidores, después de tanto tiempo configurando,
+            aprendiendo de mis errores, estoy listo para ofrecerte un servicio de
+            calidad y a un precio muy accesible. También sé configurar bots de
+            discord, no crearlos y mucho más.
+        </p>
+        <p>
+            No creas que por ofrecer un servicio "barato" sera de mala calidad o
+            tendrá mala atención, todo lo contrario, a mí me gusta atender a mis
+            clientes de la mejor manera. Con un soporte diario casi 24/7
+        </p>
+        <p>
+            ¡Si te convencí, ve a ver mis precios y planes! ¡No te arrepentirás!
+        </p>
+    </div>
+
+    <!-- PLANES -->
+    <div id="planes" class="page">
+        <button class="nav-link back-button" data-page="home">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/less-than.png" alt="back arrow" class="back-arrow"> Volver
+        </button>
+        <h2>Planes - Precios</h2>
+        <p>¡Echa un vistazo a los precios que tengo por servicio!</p>
+
+        <p class="note">
+            <span class="note-title">NOTA:</span> ¡Los tiempos de entrega pueden variar según la dificultad y
+            complejidad del trabajo que contrates!
+        </p>
+        <p class="note">
+            <span class="note-title">NOTA 2:</span> ¡Los precios de los productos pueden variar según la dificultad y
+            complejidad del trabajo que contrates!
+        </p>
+
+        <div class="tables-row">
+            <div>
+                <h3>Traducción</h3>
+                <div class="table-container">
+                    <table class="service-table">
+                        <thead>
+                            <tr>
+                                <th>Servicio</th>
+                                <th>Entrega</th>
+                                <th>Experiencia</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>x1 Traducción de Plugin</td>
+                                <td>1-2 Días</td>
+                                <td><span class="stars">⭐⭐⭐⭐⭐</span></td>
+                                <td>$3 USD</td>
+                            </tr>
+                            <tr>
+                                <td>x3 Traducción de Plugin</td>
+                                <td>2-3 Días</td>
+                                <td><span class="stars">⭐⭐⭐⭐⭐</span></td>
+                                <td>$7 USD</td>
+                            </tr>
+                            <tr>
+                                <td>x5 Traducción de Plugin</td>
+                                <td>2-3 Días</td>
+                                <td><span class="stars">⭐⭐⭐⭐⭐</span></td>
+                                <td>10$ USD</td>
+                            </tr>
+                            <tr>
+                                <td>x10 Traducción de Plugin</td>
+                                <td>3-4 Días</td>
+                                <td><span class="stars">⭐⭐⭐⭐⭐</span></td>
+                                <td>18$ USD</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div>
+                <h3>Configuración de Modalidades</h3>
+                <div class="table-container">
+                    <table class="service-table">
+                        <thead>
+                            <tr>
+                                <th>Servicio</th>
+                                <th>Entrega</th>
+                                <th>Experiencia</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Authme</td>
+                                <td>2-3 Días</td>
+                                <td><span class="stars">⭐⭐⭐</span></td>
+                                <td>$4 USD</td>
+                            </tr>
+                            <tr>
+                                <td>Lobby</td>
+                                <td>2-3 Días</td>
+                                <td><span class="stars">⭐⭐⭐</span></td>
+                                <td>$6 USD</td>
+                            </tr>
+                            <tr>
+                                <td>BoxPvP</td>
+                                <td>5-7 Días</td>
+                                <td><span class="stars">⭐⭐⭐⭐⭐</span></td>
+                                <td>18$ USD</td>
+                            </tr>
+                            <tr>
+                                <td>Survival Clasico</td>
+                                <td>7-14 Días</td>
+                                <td><span class="stars">⭐⭐⭐</span></td>
+                                <td>24$ USD</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="purchase-button">
+                ¡Comprar! <img src="https://img.icons8.com/material-rounded/24/ffffff/shopping-cart.png" alt="shopping cart icon" class="icon">
+            </a>
+        </div>
+    </div>
+
+    <!-- CONTACTO -->
+    <div id="contacto" class="page">
+        <button class="nav-link back-button" data-page="home">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/less-than.png" alt="back arrow" class="back-arrow"> Volver
+        </button>
+        <h2>Contacto</h2>
+        <p>
+            Si necesitas soporte, o tienes dudas, únete a mi discord, y recibirás ayuda
+            personalizada por mí.
+        </p>
+        <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="discord-link">
+            <img src="https://img.icons8.com/color/96/000000/discord--v1.png" alt="Discord logo" class="discord-logo">
+        </a>
+    </div>
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
