@@ -70,8 +70,7 @@ h1, h2 {
 
 h3 {
     font-size: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 p {
@@ -102,7 +101,6 @@ p {
     margin-top: 3rem;
 }
 
-/* Botones originales morados con bordes circulares */
 button.nav-link {
     background: transparent;
     color: var(--text-color);
@@ -157,10 +155,6 @@ button.nav-link:hover {
     padding-top: 4rem;
 }
 
-#about h2, #planes h2, #contacto h2 {
-    margin-bottom: 1rem;
-}
-
 .note {
     font-style: italic;
     color: #cccccc;
@@ -173,27 +167,25 @@ button.nav-link:hover {
     color: #ffffff;
 }
 
-/* Aquí hacemos que las tablas estén lado a lado */
+/* FLEX PARA TABLAS LADO A LADO */
 .tables-row {
     display: flex;
     justify-content: center;
-    gap: 2rem; /* espacio entre tablas */
-    flex-wrap: wrap; /* permite que se bajen si es muy pequeño */
-}
-
-.tables-row .table-container {
-    flex: 0 0 45%; /* cada tabla ocupa 45% del contenedor */
-    min-width: 280px; /* ancho mínimo para pantallas pequeñas */
-    background-color: var(--darker-bg);
-    border-radius: 10px;
-    padding: 1rem;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .table-container {
+    flex: 1 1 300px; /* ancho flexible mínimo 300px */
     background-color: var(--darker-bg);
     border-radius: 10px;
     padding: 1rem;
-    margin-top: 1rem;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.table-container h3 {
+    margin-bottom: 1rem;
 }
 
 .service-table {
