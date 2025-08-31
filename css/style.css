@@ -172,14 +172,14 @@ button.nav-link:hover {
 .tables-row {
     display: flex;
     justify-content: center;
-    gap: 2.5rem; /* espacio entre tablas */
+    gap: 3rem; /* más espacio entre tablas */
     flex-wrap: wrap;
 }
 
 .table-container {
-    flex: 1 1 45%;       /* ancho flexible */
-    min-width: 280px;    /* mínimo ancho para móviles */
-    max-width: 360px;    /* ancho máximo para que no se estiren demasiado */
+    flex: 1 1 48%;       /* ahora ocupan un poco más de ancho */
+    min-width: 280px;    /* ancho mínimo para móviles */
+    max-width: 400px;    /* ancho máximo para que no se estiren demasiado */
     background-color: var(--darker-bg);
     border-radius: 10px;
     padding: 1rem;
@@ -189,7 +189,7 @@ button.nav-link:hover {
 
 .table-container h3 {
     margin-bottom: 0.75rem;
-    font-size: 1.25rem;
+    font-size: 1.3rem;  /* ligeramente más grande */
     word-wrap: break-word;
 }
 
@@ -197,7 +197,7 @@ button.nav-link:hover {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 0;
-    table-layout: fixed; /* fuerza ancho proporcional de columnas */
+    table-layout: fixed;
     word-wrap: break-word;
 }
 
