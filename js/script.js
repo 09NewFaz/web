@@ -1,35 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     const pages = document.querySelectorAll('.page');
-    const backButtons = document.querySelectorAll('.back-button');
 
     function showPage(pageId) {
         pages.forEach(page => {
-            if (page.id === pageId) {
-                page.classList.add('active');
-            } else {
-                page.classList.remove('active');
-            }
+            // Agrega la clase 'active' solo a la página seleccionada
+            page.classList.toggle('active', page.id === pageId);
         });
     }
 
-    // navegación desde los links del menú
+    // Maneja clicks en los botones de navegación
     navLinks.forEach(link => {
         link.addEventListener('click', (event) => {
             const pageId = event.currentTarget.dataset.page;
-            if (pageId) {
-                showPage(pageId);
-            }
+            if (pageId) showPage(pageId);
         });
     });
 
-    // navegación con los botones de "Volver"
-    backButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            showPage('home');
-        });
-    });
-
-    // mostrar home al inicio
+    // Muestra la página de inicio al cargar
     showPage('home');
 });
