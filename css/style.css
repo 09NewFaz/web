@@ -176,13 +176,19 @@ button.nav-link:hover {
 }
 
 .table-container {
-    flex: 1 1 300px; /* ancho flexible mínimo 300px */
+    flex: 1 1 45%;       /* Cada tabla ocupa 45% del contenedor */
+    min-width: 280px;    /* mínimo ancho para pantallas pequeñas */
     background-color: var(--darker-bg);
     border-radius: 10px;
     padding: 1rem;
     box-sizing: border-box;
     text-align: center;
 }
+
+.table-container h3 {
+    margin-bottom: 1rem;
+}
+
 
 .table-container h3 {
     margin-bottom: 1rem;
