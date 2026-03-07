@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="LuckyDrip — Catálogo exclusivo de streetwear premium. Nike, Supreme, Fear of God, Corteiz y más." />
+    <title>LuckyDrip | Catálogo de Ropa Urbana</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="images/Shop/favicon.png" type="image/png" />
+</head>
+
+<body>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-bar" id="progress-bar"></div>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="navbar-logo">
+            <img src="images/Shop/logo_nav.png" alt="LuckyDrip" class="navbar-logo-img" />
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">← Inicio</a>
+            <a href="#catalog-section" class="nav-link active">Catálogo</a>
+            <a href="luckyshoes.html" class="nav-link">Shoes</a>
+            <a href="luckyparfum.html" class="nav-link">Parfum</a>
+            <a href="#contact" class="nav-link">Contacto</a>
+        </div>
+        <div class="navbar-right">
+            <div class="navbar-search">
+                <span class="search-icon">🔍</span>
+                <input id="search-input" type="search" placeholder="Buscar productos..." autocomplete="off" />
+                <div class="search-dropdown" id="search-dropdown"></div>
+            </div>
+            <div class="navbar-count" id="result-count"><span>—</span> items</div>
+            <button class="theme-toggle" id="theme-toggle" title="Cambiar tema">🌙</button>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="index.html" class="mobile-nav-link">← Inicio</a>
+        <a href="#catalog-section" class="mobile-nav-link" onclick="closeMobileNav()">Catálogo</a>
+        <a href="luckyshoes.html" class="mobile-nav-link">Shoes</a>
+        <a href="luckyparfum.html" class="mobile-nav-link">Parfum</a>
+        <a href="#contact" class="mobile-nav-link" onclick="closeMobileNav()">Contacto</a>
+    </div>
+
+    <!-- HERO MINI -->
+    <section class="catalog-hero" id="home">
+        <div class="catalog-hero-bg"></div>
+        <canvas class="particles-canvas" id="hero-particles"></canvas>
+        <div class="catalog-hero-content">
+            <span class="catalog-hero-badge">👕 Streetwear Premium</span>
+            <h1 class="catalog-hero-title">Lucky<span>Drip</span></h1>
+            <p class="catalog-hero-sub">+70 prendas de ropa urbana exclusiva · Nike · Supreme · Fear of God · Corteiz ·
+                Off-White</p>
+        </div>
+    </section>
+
+    <!-- BRAND MARQUEE -->
+    <div class="brand-marquee">
+        <div class="brand-marquee-track">
+            <span>NIKE</span><span>SUPREME</span><span>FEAR OF
+                GOD</span><span>CORTEIZ</span><span>OFF-WHITE</span><span>ESSENTIALS</span><span>STÜSSY</span><span>TRAPSTAR</span>
+            <span>NIKE</span><span>SUPREME</span><span>FEAR OF
+                GOD</span><span>CORTEIZ</span><span>OFF-WHITE</span><span>ESSENTIALS</span><span>STÜSSY</span><span>TRAPSTAR</span>
+        </div>
+    </div>
+
+    <!-- CATALOG -->
+    <section id="catalog-section" class="catalog-section reveal-section">
+        <div class="catalog-header reveal-up">
+            <span class="section-tag">Colección</span>
+            <h2 class="catalog-title">Nuestro <span>Catálogo</span></h2>
+        </div>
+        <div class="layout">
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <span class="sidebar-title">Filtros</span>
+                    <button id="btn-clear-filters" class="btn-clear">Limpiar todo</button>
+                </div>
+                <div id="active-filters" class="active-filters"></div>
+                <div class="filter-group">
+                    <div class="filter-group-label">Precio (CLP)</div>
+                    <div class="price-slider-wrap">
+                        <div class="price-range-labels">
+                            <span id="price-min-label">$0</span>
+                            <span id="price-max-label">$999.999</span>
+                        </div>
+                        <div class="price-track-wrap">
+                            <div class="price-track-fill" id="price-track-fill"></div>
+                            <input type="range" class="price-range" id="price-min" min="0" max="999999" value="0"
+                                step="1000" />
+                            <input type="range" class="price-range" id="price-max" min="0" max="999999" value="999999"
+                                step="1000" />
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-group-label">Género</div>
+                    <div class="filter-options" id="filter-genero"></div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-group-label">Marca</div>
+                    <div class="filter-options" id="filter-marca"></div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-group-label">Categoría</div>
+                    <div class="filter-options" id="filter-categoria"></div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-group-label">Talla</div>
+                    <div class="filter-options" id="filter-talla"></div>
+                </div>
+            </aside>
+            <main class="main">
+                <div class="content-bar">
+                    <div id="active-filters-bar" style="display:flex;gap:6px;flex-wrap:wrap;flex:1"></div>
+                    <div class="view-controls">
+                        <button class="view-btn active" id="btn-grid" title="Vista grilla"
+                            onclick="setView('grid')">⊞</button>
+                        <button class="view-btn" id="btn-list" title="Vista lista" onclick="setView('list')">☰</button>
+                    </div>
+                    <select id="sort-select" class="sort-select">
+                        <option value="default">Orden por defecto</option>
+                        <option value="new-first">Nuevos primero</option>
+                        <option value="name-asc">Nombre A → Z</option>
+                        <option value="name-desc">Nombre Z → A</option>
+                        <option value="brand">Marca A → Z</option>
+                        <option value="price-asc">Precio ↑</option>
+                        <option value="price-desc">Precio ↓</option>
+                    </select>
+                </div>
+                <!-- MOBILE FILTER BTN -->
+                <button class="mobile-filter-btn" id="mobile-filter-btn" onclick="toggleMobileSidebar()">
+                    Filtros <span class="filter-badge" id="filter-badge" style="display:none">0</span>
+                </button>
+                <div id="product-grid" class="product-grid" role="list"></div>
+
+                <!-- RECENTLY VIEWED -->
+                <div class="recently-viewed" id="recently-viewed" style="display:none">
+                    <div class="rv-title">👁 Visto recientemente</div>
+                    <div class="rv-grid" id="rv-grid"></div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section reveal-section">
+        <div class="contact-inner reveal-up">
+            <span class="section-tag">Contacto</span>
+            <h2 class="contact-title">¿Listo para tu próximo <span>Drip</span>?</h2>
+            <p class="contact-text">Nuestro catálogo es informativo. Para consultar disponibilidad contactanos
+                directamente.</p>
+            <div class="contact-icons">
+                <a href="https://instagram.com/luckydrip" target="_blank" class="contact-icon-btn">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                </a>
+                <a href="https://wa.me/1234567890" target="_blank" class="contact-icon-btn">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+        title="Volver arriba">↑</button>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <div class="footer-wordmark">Lucky<span>Drip</span></div>
+                <p class="footer-desc">Catálogo exclusivo de streetwear y moda urbana premium.</p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/luckydrip" target="_blank" class="social-link">Instagram</a>
+                    <a href="https://wa.me/1234567890" target="_blank" class="social-link">WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-links-col">
+                <div class="footer-col-title">Catálogos</div>
+                <a href="luckydrip.html" class="footer-link" style="color:var(--accent)">LuckyDrip</a>
+                <a href="luckyshoes.html" class="footer-link">LuckyShoes</a>
+                <a href="luckyparfum.html" class="footer-link">LuckyParfum</a>
+            </div>
+            <div class="footer-links-col">
+                <div class="footer-col-title">Navegación</div>
+                <a href="index.html" class="footer-link">Inicio</a>
+                <a href="#catalog-section" class="footer-link">Catálogo</a>
+                <a href="#contact" class="footer-link">Contacto</a>
+            </div>
+            <div class="footer-links-col">
+                <div class="footer-col-title">Legal</div>
+                <a href="privacidad.html" class="footer-link">Política de Privacidad</a>
+                <span class="footer-link">Solo catálogo informativo</span>
+                <span class="footer-link">Consultas por DM</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 <strong>Lucky World</strong> — Streetwear · Sneakers · Parfum</p>
+        </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal">
+            <div class="modal-img-side">
+                <button class="modal-close" onclick="closeModal()">✕</button>
+                <img id="modal-img" src="" alt="" class="lazy-img" />
+                <div id="modal-img-placeholder" class="modal-img-placeholder" style="display:none">👕</div>
+                <button id="modal-zoom-btn" class="modal-zoom-btn">⤢ Ampliar</button>
+            </div>
+            <div class="modal-info-side">
+                <div class="modal-header">
+                    <div class="modal-brand" id="modal-brand"></div>
+                    <div class="modal-name" id="modal-name"></div>
+                    <div class="modal-badges" id="modal-badges"></div>
+                </div>
+                <p class="modal-desc" id="modal-desc"></p>
+                <hr class="modal-divider" />
+                <div class="modal-detail-block">
+                    <div class="modal-detail-label">Tallas disponibles</div>
+                    <div class="modal-sizes" id="modal-sizes"></div>
+                </div>
+                <div class="modal-detail-block">
+                    <div class="modal-detail-label">Colores</div>
+                    <div class="modal-colors" id="modal-colors"></div>
+                </div>
+                <hr class="modal-divider" />
+                <div class="catalog-only-notice">
+                    📋 Catálogo informativo — Consultá disponibilidad por Instagram o WhatsApp.
+                    <div class="catalog-notice-icons">
+                        <a href="https://instagram.com/luckydrip" target="_blank" class="catalog-notice-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/1234567890" target="_blank" class="catalog-notice-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <img id="lightbox-img" src="" alt="" />
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Back to top
+        const btt = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => { btt.classList.toggle('visible', window.scrollY > 400) });
+        // Particles
+        (function () { const c = document.getElementById('hero-particles'); if (!c) return; const x = c.getContext('2d'); let w, h, p = []; function r() { w = c.width = c.parentElement.offsetWidth; h = c.height = c.parentElement.offsetHeight } r(); window.addEventListener('resize', r); for (let i = 0; i < 40; i++)p.push({ x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.5 + .5, dx: (Math.random() - .5) * .3, dy: (Math.random() - .5) * .3, a: Math.random() * .25 + .08 }); function d() { x.clearRect(0, 0, w, h); p.forEach(q => { x.beginPath(); x.arc(q.x, q.y, q.r, 0, Math.PI * 2); x.fillStyle = `rgba(232,255,0,${q.a})`; x.fill(); q.x += q.dx; q.y += q.dy; if (q.x < 0) q.x = w; if (q.x > w) q.x = 0; if (q.y < 0) q.y = h; if (q.y > h) q.y = 0 }); requestAnimationFrame(d) } d() })();
+    </script>
+</body>
+
+</html>

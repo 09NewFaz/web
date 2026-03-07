@@ -1,183 +1,1921 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NewFaz - Web</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Lucky — Tu destino exclusivo de moda urbana, zapatillas premium y fragancias de lujo." />
+  <title>Lucky | Drip · Shoes · Parfum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="images/Shop/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    /* ── THEMES ── */
+    [data-theme="dark"] {
+      --bg-primary: #050505;
+      --bg-secondary: #0a0a0a;
+      --bg-card: rgba(18, 18, 18, .6);
+      --bg-card-hover: rgba(28, 28, 28, .8);
+      --border: #1a1a1a;
+      --border-hover: #333;
+      --text-primary: #f0f0f0;
+      --text-secondary: #808080;
+      --text-muted: #484848;
+      --shadow-card: 0 8px 32px rgba(0, 0, 0, .5);
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f5f5f5;
+      --bg-secondary: #ebebeb;
+      --bg-card: rgba(255, 255, 255, .7);
+      --bg-card-hover: rgba(240, 240, 240, .9);
+      --border: #d5d5d5;
+      --border-hover: #b0b0b0;
+      --text-primary: #111;
+      --text-secondary: #555;
+      --text-muted: #999;
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, .1);
+    }
+
+    :root {
+      --accent: #e8ff00;
+      --accent-glow: rgba(232, 255, 0, 0.08);
+      --accent-glow2: rgba(232, 255, 0, 0.15);
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --transition: 0.2s ease;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.5;
+      overflow-x: hidden;
+      transition: background .3s ease, color .3s ease
+    }
+
+    /* ── PROGRESS BAR ── */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--accent);
+      z-index: 9999;
+      width: 0%;
+      transition: width .1s linear;
+      box-shadow: 0 0 10px rgba(232, 255, 0, .5)
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed;
+      top: 3px;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(5, 5, 5, 0);
+      backdrop-filter: blur(0px);
+      border-bottom: 1px solid transparent;
+      padding: 0 2.5rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      transition: all .4s ease
+    }
+
+    [data-theme="light"] .navbar {
+      background: rgba(245, 245, 245, 0)
+    }
+
+    .navbar.scrolled {
+      background: rgba(5, 5, 5, .96);
+      backdrop-filter: blur(24px);
+      border-bottom-color: var(--border)
+    }
+
+    [data-theme="light"] .navbar.scrolled {
+      background: rgba(245, 245, 245, .96)
+    }
+
+    .navbar-logo {
+      text-decoration: none
+    }
+
+    .navbar-logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+      filter: brightness(1);
+      transition: filter .2s ease, transform .2s ease
+    }
+
+    .navbar-logo-img:hover {
+      transform: scale(1.04)
+    }
+
+    [data-theme="light"] .navbar-logo-img {
+      filter: invert(1)
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem
+    }
+
+    .nav-link {
+      font-size: .8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color var(--transition);
+      position: relative;
+      padding-bottom: 2px
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transition: width .3s ease
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text-primary)
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      flex-shrink: 0
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent)
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem
+    }
+
+    /* ── MOBILE NAV ── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 75px;
+      left: 0;
+      right: 0;
+      background: rgba(5, 5, 5, .98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+      flex-direction: column;
+      padding: 1rem 2rem
+    }
+
+    [data-theme="light"] .mobile-nav {
+      background: rgba(245, 245, 245, .98)
+    }
+
+    .mobile-nav.open {
+      display: flex
+    }
+
+    .mobile-nav-link {
+      padding: .75rem 0;
+      font-size: .88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: color var(--transition)
+    }
+
+    .mobile-nav-link:last-child {
+      border-bottom: none
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--accent)
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0 2rem
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 35%, rgba(232, 255, 0, .06) 0%, transparent 70%)
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(232, 255, 0, .03) 0%, transparent 50%)
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      max-width: 900px;
+      z-index: 1
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--accent);
+      border: 1px solid rgba(232, 255, 0, .3);
+      padding: 6px 18px;
+      border-radius: 24px;
+      margin-bottom: 2rem;
+      background: var(--accent-glow);
+      animation: badgePulse 3s ease infinite
+    }
+
+    @keyframes badgePulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(232, 255, 0, .15)
+      }
+
+      50% {
+        box-shadow: 0 0 0 10px rgba(232, 255, 0, 0)
+      }
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: .88;
+      color: var(--text-primary);
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem
+    }
+
+    .hero-title span {
+      color: var(--accent);
+      display: inline
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 550px;
+      margin: 0 auto 1rem;
+      line-height: 1.7;
+      font-weight: 300
+    }
+
+    .hero-sub-accent {
+      font-size: .78rem;
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: .7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: bounce 2s ease infinite
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0)
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(6px)
+      }
+    }
+
+    .scroll-arrow {
+      font-size: 1rem
+    }
+
+    /* ── GRID PARTICLES ── */
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(232, 255, 0, .02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232, 255, 0, .02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      opacity: .5
+    }
+
+    /* ── CATALOGS SECTION ── */
+    .catalogs-section {
+      padding: 100px 2rem 120px;
+      position: relative
+    }
+
+    .catalogs-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent)
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: .65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--accent);
+      margin-bottom: 1rem
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      color: var(--text-primary);
+      letter-spacing: 1px
+    }
+
+    .section-title span {
+      color: var(--accent)
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: .95rem;
+      margin-top: 1rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7
+    }
+
+    /* ── CATALOG CARDS ── */
+    .catalog-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .catalog-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: transform .35s cubic-bezier(.34, 1.2, .64, 1), border-color .3s ease, box-shadow .3s ease
+    }
+
+    .catalog-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--accent);
+      box-shadow: 0 20px 60px rgba(232, 255, 0, .08), 0 8px 30px rgba(0, 0, 0, .4)
+    }
+
+    .catalog-card-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+      opacity: .08;
+      transition: opacity .3s ease, transform .5s ease;
+      pointer-events: none
+    }
+
+    .catalog-card:hover .catalog-card-bg {
+      opacity: .15;
+      transform: scale(1.1) rotate(5deg)
+    }
+
+    .catalog-card-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5, 5, 5, .95) 0%, rgba(5, 5, 5, .3) 50%, transparent 100%);
+      pointer-events: none;
+      transition: background .3s ease
+    }
+
+    [data-theme="light"] .catalog-card-gradient {
+      background: linear-gradient(to top, rgba(240, 240, 240, .98) 0%, rgba(240, 240, 240, .4) 50%, transparent 100%)
+    }
+
+    .catalog-card-glow {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity .5s ease;
+      pointer-events: none
+    }
+
+    .catalog-card:hover .catalog-card-glow {
+      opacity: 1
+    }
+
+    .catalog-card-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem
+    }
+
+    .catalog-card-number-wrap {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.5rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .catalog-card-number {
+      font-family: var(--font-display);
+      font-size: 5.5rem;
+      line-height: 1;
+      letter-spacing: 3px;
+      -webkit-text-stroke: 1.5px var(--accent);
+      color: transparent;
+      opacity: .6;
+      transition: all .4s ease;
+      filter: drop-shadow(0 0 15px rgba(232, 255, 0, .15))
+    }
+
+    .catalog-card:hover .catalog-card-number {
+      opacity: 1;
+      -webkit-text-stroke-width: 2px;
+      filter: drop-shadow(0 0 25px rgba(232, 255, 0, .3));
+      transform: translateY(-3px)
+    }
+
+    .catalog-card-number-line {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .catalog-card-number-line::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1.5px;
+      background: var(--accent);
+      opacity: .4;
+      transition: width .4s ease
+    }
+
+    .catalog-card:hover .catalog-card-number-line::before {
+      width: 42px;
+      opacity: .8
+    }
+
+    .catalog-card-number-label {
+      font-size: .55rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      transition: color .3s ease
+    }
+
+    .catalog-card:hover .catalog-card-number-label {
+      color: var(--text-secondary)
+    }
+
+    /* Specific number colors */
+    .card-shoes .catalog-card-number {
+      -webkit-text-stroke-color: #63b3ed;
+      filter: drop-shadow(0 0 15px rgba(99, 179, 237, .15))
+    }
+
+    .card-shoes:hover .catalog-card-number {
+      filter: drop-shadow(0 0 25px rgba(99, 179, 237, .3))
+    }
+
+    .card-parfum .catalog-card-number {
+      -webkit-text-stroke-color: #b794f4;
+      filter: drop-shadow(0 0 15px rgba(183, 148, 244, .15))
+    }
+
+    .card-parfum:hover .catalog-card-number {
+      filter: drop-shadow(0 0 25px rgba(183, 148, 244, .3))
+    }
+
+    .catalog-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+      filter: drop-shadow(0 0 20px rgba(232, 255, 0, .3))
+    }
+
+    .catalog-card-title {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: .5rem
+    }
+
+    .catalog-card-title span {
+      color: var(--accent)
+    }
+
+    .catalog-card-desc {
+      color: var(--text-secondary);
+      font-size: .85rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      max-width: 280px
+    }
+
+    .catalog-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      padding: 10px 20px;
+      border: 1px solid rgba(232, 255, 0, .3);
+      border-radius: 10px;
+      background: var(--accent-glow);
+      transition: all .25s ease
+    }
+
+    .catalog-card:hover .catalog-card-cta {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+      transform: translateX(4px)
+    }
+
+    .cta-arrow {
+      transition: transform .25s ease;
+      font-size: 1rem
+    }
+
+    .catalog-card:hover .cta-arrow {
+      transform: translateX(4px)
+    }
+
+    /* Specific card themes */
+    .card-drip .catalog-card-glow {
+      background: radial-gradient(circle at 50% 80%, rgba(232, 255, 0, .06), transparent 60%)
+    }
+
+    .card-shoes .catalog-card-glow {
+      background: radial-gradient(circle at 50% 80%, rgba(66, 153, 225, .06), transparent 60%)
+    }
+
+    .card-parfum .catalog-card-glow {
+      background: radial-gradient(circle at 50% 80%, rgba(183, 148, 244, .06), transparent 60%)
+    }
+
+    .card-shoes .catalog-card-cta {
+      color: #63b3ed;
+      border-color: rgba(66, 153, 225, .3);
+      background: rgba(66, 153, 225, .08)
+    }
+
+    .card-shoes:hover .catalog-card-cta {
+      background: #63b3ed;
+      color: #000;
+      border-color: #63b3ed
+    }
+
+    .card-parfum .catalog-card-cta {
+      color: #b794f4;
+      border-color: rgba(183, 148, 244, .3);
+      background: rgba(183, 148, 244, .08)
+    }
+
+    .card-parfum:hover .catalog-card-cta {
+      background: #b794f4;
+      color: #000;
+      border-color: #b794f4
+    }
+
+    .card-shoes .catalog-card-title span {
+      color: #63b3ed
+    }
+
+    .card-parfum .catalog-card-title span {
+      color: #b794f4
+    }
+
+    .card-shoes .catalog-card-number {
+      color: #63b3ed
+    }
+
+    .card-parfum .catalog-card-number {
+      color: #b794f4
+    }
+
+    /* ── FEATURES STRIP ── */
+    .features-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-secondary)
+    }
+
+    .feature-item {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background .3s ease
+    }
+
+    .feature-item:last-child {
+      border-right: none
+    }
+
+    .feature-item:hover {
+      background: var(--bg-card-hover)
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: .8rem;
+      display: block
+    }
+
+    .feature-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: var(--text-primary);
+      margin-bottom: .3rem
+    }
+
+    .feature-desc {
+      font-size: .78rem;
+      color: var(--text-muted);
+      line-height: 1.5
+    }
+
+    /* ── ABOUT ── */
+    .about-section {
+      padding: 120px 4rem;
+      background: var(--bg-secondary);
+      position: relative
+    }
+
+    .about-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent)
+    }
+
+    .about-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center
+    }
+
+    .about-title {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      line-height: 1.05;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px
+    }
+
+    .about-title span {
+      color: var(--accent)
+    }
+
+    .about-text {
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+      font-size: .93rem
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3rem;
+      justify-content: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border)
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: 1px
+    }
+
+    .stat-label {
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted)
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      padding: 100px 4rem;
+      text-align: center;
+      position: relative
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent)
+    }
+
+    .contact-inner {
+      max-width: 680px;
+      margin: 0 auto
+    }
+
+    .contact-title {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      line-height: 1.1
+    }
+
+    .contact-title span {
+      color: var(--accent)
+    }
+
+    .contact-text {
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      font-size: .93rem
+    }
+
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 16px
+    }
+
+    .contact-icon-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all .2s ease
+    }
+
+    .contact-icon-btn:hover {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px)
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border)
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding: 4rem;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .footer-wordmark {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      letter-spacing: 2px;
+      color: var(--text-primary);
+      margin-bottom: .75rem
+    }
+
+    .footer-wordmark span {
+      color: var(--accent)
+    }
+
+    .footer-desc {
+      color: var(--text-secondary);
+      font-size: .85rem;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      max-width: 280px
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap
+    }
+
+    .social-link {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all var(--transition)
+    }
+
+    .social-link:hover {
+      border-color: var(--accent);
+      color: var(--accent)
+    }
+
+    .footer-links-col {
+      display: flex;
+      flex-direction: column;
+      gap: .6rem
+    }
+
+    .footer-col-title {
+      font-size: .65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: .5rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .footer-link {
+      font-size: .83rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color var(--transition);
+      cursor: default
+    }
+
+    a.footer-link {
+      cursor: pointer
+    }
+
+    a.footer-link:hover {
+      color: var(--accent)
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 4rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: .78rem
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal-section,
+    .reveal-up,
+    .reveal-left,
+    .reveal-right {
+      opacity: 0;
+      transition: opacity .7s ease, transform .7s ease
+    }
+
+    .reveal-up {
+      transform: translateY(40px)
+    }
+
+    .reveal-left {
+      transform: translateX(-40px)
+    }
+
+    .reveal-right {
+      transform: translateX(40px)
+    }
+
+    .reveal-section.visible,
+    .reveal-up.visible,
+    .reveal-left.visible,
+    .reveal-right.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px) {
+      .catalog-cards {
+        grid-template-columns: 1fr;
+        max-width: 450px
+      }
+
+      .catalog-card {
+        aspect-ratio: 4/3
+      }
+
+      .features-strip {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .feature-item:nth-child(2) {
+        border-right: none
+      }
+
+      .feature-item:nth-child(3n) {
+        border-right: 1px solid var(--border)
+      }
+
+      .nav-links {
+        display: none
+      }
+
+      .mobile-menu-btn {
+        display: flex
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem
+      }
+    }
+
+    @media(max-width:768px) {
+      .features-strip {
+        grid-template-columns: 1fr
+      }
+
+      .feature-item {
+        border-right: none !important;
+        border-bottom: 1px solid var(--border)
+      }
+
+      .feature-item:last-child {
+        border-bottom: none
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2.5rem
+      }
+
+      .footer-bottom {
+        padding: 1.5rem 2rem
+      }
+
+      .about-section,
+      .contact-section {
+        padding: 80px 1.5rem
+      }
+
+      .about-stats {
+        flex-wrap: wrap;
+        gap: 2rem
+      }
+    }
+
+    @media(max-width:600px) {
+      .navbar {
+        padding: 0 1.2rem;
+        height: 64px
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 16vw, 5rem)
+      }
+
+      .catalog-card {
+        aspect-ratio: 3/4
+      }
+
+      .catalogs-section {
+        padding: 60px 1rem 80px
+      }
+    }
+
+    /* ── NAV PRIVACY ── */
+    .nav-link-privacy {
+      font-size: .7rem !important;
+      color: var(--text-muted) !important;
+      border: 1px solid var(--border);
+      padding: 4px 10px !important;
+      border-radius: 6px;
+      transition: all .2s ease
+    }
+
+    .nav-link-privacy:hover {
+      border-color: var(--accent);
+      color: var(--accent) !important;
+      background: var(--accent-glow)
+    }
+
+    .nav-link-privacy::after {
+      display: none !important
+    }
+
+    /* ── ANIMATED ORBS ── */
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      opacity: .4;
+      will-change: transform
+    }
+
+    .hero-orb-1 {
+      width: 420px;
+      height: 420px;
+      background: rgba(232, 255, 0, .07);
+      top: 8%;
+      left: 12%;
+      animation: orbFloat1 10s ease-in-out infinite
+    }
+
+    .hero-orb-2 {
+      width: 320px;
+      height: 320px;
+      background: rgba(99, 179, 237, .05);
+      bottom: 15%;
+      right: 8%;
+      animation: orbFloat2 14s ease-in-out infinite
+    }
+
+    .hero-orb-3 {
+      width: 260px;
+      height: 260px;
+      background: rgba(183, 148, 244, .05);
+      top: 35%;
+      right: 20%;
+      animation: orbFloat3 12s ease-in-out infinite
+    }
+
+    @keyframes orbFloat1 {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1)
+      }
+
+      33% {
+        transform: translate(35px, -25px) scale(1.08)
+      }
+
+      66% {
+        transform: translate(-20px, 30px) scale(.94)
+      }
+    }
+
+    @keyframes orbFloat2 {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1)
+      }
+
+      33% {
+        transform: translate(-30px, 20px) scale(1.05)
+      }
+
+      66% {
+        transform: translate(25px, -15px) scale(.96)
+      }
+    }
+
+    @keyframes orbFloat3 {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1)
+      }
+
+      50% {
+        transform: translate(20px, 25px) scale(1.06)
+      }
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      pointer-events: none;
+      opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+    }
+
+    /* ── SHIMMER ON CARDS ── */
+    .catalog-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, .03) 50%, transparent 60%);
+      transform: rotate(25deg) translateX(-100%);
+      z-index: 3;
+      pointer-events: none
+    }
+
+    .catalog-card:hover::before {
+      animation: shimmer 1.2s ease forwards
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: rotate(25deg) translateX(-100%)
+      }
+
+      100% {
+        transform: rotate(25deg) translateX(100%)
+      }
+    }
+
+    /* ── FEATURE ICON WRAP ── */
+    .feature-icon-wrap {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto .8rem;
+      border: 1px solid var(--border);
+      background: rgba(232, 255, 0, .03);
+      transition: all .3s ease;
+      font-size: 1.5rem
+    }
+
+    .feature-item:hover .feature-icon-wrap {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(232, 255, 0, .08)
+    }
+
+    .feature-counter {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      color: var(--text-primary);
+      margin-bottom: .2rem;
+      display: block;
+      line-height: 1
+    }
+
+    /* ── CONTACT CARD (glassmorphism) ── */
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 3.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      max-width: 620px;
+      margin: 0 auto;
+      backdrop-filter: blur(12px)
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent)
+    }
+
+    .contact-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(232, 255, 0, .04), transparent 60%);
+      pointer-events: none
+    }
+
+    [data-theme="light"] .contact-card {
+      background: rgba(255, 255, 255, .7)
+    }
+
+    /* ── FOOTER GRADIENT LINE ── */
+    .footer-gradient-line {
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), #63b3ed, #b794f4, var(--accent));
+      background-size: 200% 100%;
+      animation: gradientSlide 4s linear infinite
+    }
+
+    @keyframes gradientSlide {
+      0% {
+        background-position: 0% 50%
+      }
+
+      100% {
+        background-position: 200% 50%
+      }
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .section-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin: 0 auto 2rem;
+      border-radius: 2px
+    }
+  </style>
 </head>
+
 <body>
-  
 
-    <main class="page-container">
-        <div id="home" class="page active">
-            <h1 class="main-title">NewFaz - Web</h1>
-            <p class="subtitle">
-                ¡Soy <span class="highlight">NewFaz</span>! Un configurador con +4 años de experiencia en
-                configuración de servidores o plugins. ¡Ve mis precios y te sorprenderás!
-            </p>
-            <div class="button-group">
-                <button class="nav-link" data-page="planes">
-                    Planes <img src="https://img.icons8.com/material-rounded/24/ffffff/shopping-cart.png" alt="cart icon" class="icon">
-                </button>
-                <button class="nav-link" data-page="about">
-                    Sobre NewFaz <img src="https://img.icons8.com/material-rounded/24/ffffff/user--v1.png" alt="user icon" class="icon">
-                </button>
-                <button class="nav-link" data-page="contacto">
-                    Soporte <img src="https://img.icons8.com/material-rounded/24/ffffff/chat.png" alt="chat icon" class="icon">
-                </button>
-            </div>
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="navbar-logo">
+      <img src="images/Shop/logo_nav.png" alt="Lucky" class="navbar-logo-img" />
+    </a>
+    <div class="nav-links">
+      <a href="#home" class="nav-link">Inicio</a>
+      <a href="#catalogs" class="nav-link">Catálogos</a>
+      <a href="#about" class="nav-link">Nosotros</a>
+      <a href="#contact" class="nav-link">Contacto</a>
+      <a href="privacidad.html" class="nav-link nav-link-privacy">Privacidad</a>
+    </div>
+    <div class="navbar-right">
+      <button class="theme-toggle" id="theme-toggle" title="Cambiar tema">🌙</button>
+      <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#home" class="mobile-nav-link" onclick="closeMobileNav()">Inicio</a>
+    <a href="#catalogs" class="mobile-nav-link" onclick="closeMobileNav()">Catálogos</a>
+    <a href="#about" class="mobile-nav-link" onclick="closeMobileNav()">Nosotros</a>
+    <a href="#contact" class="mobile-nav-link" onclick="closeMobileNav()">Contacto</a>
+    <a href="privacidad.html" class="mobile-nav-link">Privacidad</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <canvas class="particles-canvas" id="hero-particles"></canvas>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="grid-bg"></div>
+    <div class="hero-content reveal-up">
+      <span class="hero-badge"> Tu estilo, tu mundo — 2026</span>
+      <h1 class="hero-title">LUCKY<br><span>WORLD</span></h1>
+      <p class="hero-subtitle">Tres tiendas en un solo lugar. Ropa urbana, zapatillas y fragancias exoticas.</p>
+      <p class="hero-sub-accent">Drip · Shoes · Parfum</p>
+      <a href="#catalogs" class="catalog-card-cta"
+        style="font-size:.78rem;padding:14px 30px;border-radius:12px">Explorar Catálogos <span
+          class="cta-arrow">→</span></a>
+    </div>
+    <div class="scroll-indicator">
+      <span>Descubrir</span>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- FEATURES STRIP -->
+  <div class="features-strip reveal-section">
+    <div class="feature-item">
+      <div class="feature-icon-wrap">👕</div>
+      <span class="feature-counter" data-count="100">+100</span>
+      <div class="feature-title">PRENDAS</div>
+      <div class="feature-desc">Ropa urbana seleccionada de las mejores marcas y de la mejor calidad.</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon-wrap">👟</div>
+      <span class="feature-counter" data-count="50">+50</span>
+      <div class="feature-title">SNEAKERS</div>
+      <div class="feature-desc">Las zapatillas más buscadas de las mejores marcas y de la mejor calidad.</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon-wrap">🧴</div>
+      <span class="feature-counter" data-count="30">+30</span>
+      <div class="feature-title">FRAGANCIAS</div>
+      <div class="feature-desc">Perfumes de nicho, diseñador y arabes de la mejor calidad</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon-wrap">🚚</div>
+      <span class="feature-counter">24/7</span>
+      <div class="feature-title">ENVÍOS</div>
+      <div class="feature-desc">A todo Chile, por via Starken</div>
+    </div>
+  </div>
+
+  <!-- BRAND MARQUEE -->
+  <div class="brand-marquee reveal-section">
+    <div class="brand-marquee-track" id="brand-track">
+      <span>NIKE</span><span>SUPREME</span><span>FEAR OF
+        GOD</span><span>JORDAN</span><span>OFF-WHITE</span><span>CORTEIZ</span><span>ADIDAS</span><span>NEW
+        BALANCE</span><span>DIOR</span><span>CHANEL</span><span>TOM
+        FORD</span><span>YSL</span><span>CREED</span><span>STÜSSY</span><span>ESSENTIALS</span>
+      <span>NIKE</span><span>SUPREME</span><span>FEAR OF
+        GOD</span><span>JORDAN</span><span>OFF-WHITE</span><span>CORTEIZ</span><span>ADIDAS</span><span>NEW
+        BALANCE</span><span>DIOR</span><span>CHANEL</span><span>TOM
+        FORD</span><span>YSL</span><span>CREED</span><span>STÜSSY</span><span>ESSENTIALS</span>
+    </div>
+  </div>
+
+  <!-- CATALOGS -->
+  <section class="catalogs-section" id="catalogs">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Nuestros Catálogos</span>
+      <h2 class="section-title">Elige tu <span>Catalogo Favorito</span></h2>
+      <p class="section-subtitle">Tres secciones exclusivas con lo mejor de la ropa urbana, zapatillas y perfumes
+        premium.
+      </p>
+    </div>
+
+    <div class="catalog-cards">
+
+      <!-- CARD 1: LuckyDrip -->
+      <a href="luckydrip.html" class="catalog-card card-drip reveal-up" style="animation-delay:.1s">
+        <div class="catalog-card-number-wrap">
+          <span class="catalog-card-number" data-target="1">1</span>
+          <div class="catalog-card-number-line"><span class="catalog-card-number-label">Ropa Urbana</span></div>
         </div>
-
-        <div id="about" class="page">
-            <button class="nav-link back-button" data-page="home">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/less-than.png" alt="back arrow" class="back-arrow"> Volver
-            </button>
-            <h2>¡Sobre Mi!</h2>
-            <p>
-                Mi nombre es NewFaz y hace unos 4-5 años me metí en esto de
-                configuraciones de servidores, después de tanto tiempo configurando,
-                aprendiendo de mis errores, estoy listo para ofrecerte un servicio de
-                calidad y a un precio muy accesible. También sé configurar bots de
-                discord, no crearlos, y mucho más.
-            </p>
-            <p>
-                No creas que por ofrecer un servicio "barato" sera de mala calidad o
-                tendrá mala atención, todo lo contrario, a mí me gusta atender a mis
-                clientes de la mejor manera. Con un soporte diario casi 24/7
-            </p>
-            <p>
-                ¡Si te convencí, ve a ver mis precios y planes! ¡No te arrepentirás!
-            </p>
+        <div class="catalog-card-bg">👕</div>
+        <div class="catalog-card-glow"></div>
+        <div class="catalog-card-gradient"></div>
+        <div class="catalog-card-content">
+          <span class="catalog-card-icon">👕</span>
+          <h3 class="catalog-card-title">Lucky<span>Drip</span></h3>
+          <p class="catalog-card-desc">Ropa urbana premium. Nike, Supreme, Fear of God, Corteiz, Off-White
+            y más.</p>
+          <div class="catalog-card-cta">Explorar Ropa <span class="cta-arrow">→</span></div>
         </div>
+      </a>
 
-        <div id="planes" class="page">
-            <button class="nav-link back-button" data-page="home">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/less-than.png" alt="back arrow" class="back-arrow"> Volver
-            </button>
-            <h2>Planes - Precios</h2>
-            <p>¡Echa un vistazo a los precios que tengo por servicio!</p>
-
-            <p class="note">
-                <span class="note-title">NOTA:</span> ¡Los tiempos de entrega pueden variar según la dificultad y
-                complejidad del trabajo que contrates!
-            </p>
-            <p class="note">
-                <span class="note-title">NOTA 2:</span> ¡Los precios de los productos pueden variar según la dificultad y
-                complejidad del trabajo que contrates!
-            </p>
-
-            <div class="tables-row">
-                <div>
-                    <h3>Traducción</h3>
-                    <div class="table-container">
-                        <table class="service-table">
-                            <thead>
-                                <tr>
-                                    <th>Servicio</th>
-                                    <th>Entrega</th>
-                                    <th>Experiencia</th>
-                                    <th>Precio</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>x1 Traducción de Plugin</td>
-                                    <td>1-2 Días</td>
-                                    <td><span class="stars">⭐⭐⭐⭐⭐</span></td>
-                                    <td>$3 USD</td>
-                                </tr>
-                                <tr>
-                                    <td>x3 Traducción de Plugin</td>
-                                    <td>2-3 Días</td>
-                                    <td><span class="stars">⭐⭐⭐⭐⭐</span></td>
-                                    <td>$7 USD</td>
-                                </tr>
-                                <tr>
-                                    <td>x5 Traducción de Plugin</td>
-                                    <td>2-3 Días</td>
-                                    <td><span class="stars">⭐⭐⭐⭐⭐</span></td>
-                                    <td>10$ USD</td>
-                                </tr>
-                                <tr>
-                                    <td>x10 Traducción de Plugin</td>
-                                    <td>3-4 Días</td>
-                                    <td><span class="stars">⭐⭐⭐⭐⭐</span></td>
-                                    <td>18$ USD</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div>
-                    <h3>Configuración de Modalidades</h3>
-                    <div class="table-container">
-                        <table class="service-table">
-                            <thead>
-                                <tr>
-                                    <th>Servicio</th>
-                                    <th>Entrega</th>
-                                    <th>Experiencia</th>
-                                    <th>Precio</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Authme</td>
-                                    <td>2-3 Días</td>
-                                    <td><span class="stars">⭐ ⭐ ⭐</span></td>
-                                    <td>$4 USD</td>
-                                </tr>
-                                <tr>
-                                    <td>Lobby</td>
-                                    <td>2-3 Días</td>
-                                    <td><span class="stars">⭐ ⭐ ⭐ ⭐</span></td>
-                                    <td>$6 USD</td>
-                                </tr>
-                                <tr>
-                                    <td>BoxPvP</td>
-                                    <td>5-7 Días</td>
-                                    <td><span class="stars">⭐ ⭐ ⭐ ⭐ ⭐</span></td>
-                                    <td>18$ USD</td>
-                                </tr>
-                                <tr>
-                                    <td>Survival Clasico</td>
-                                    <td>7-14 Días</td>
-                                    <td><span class="stars">⭐ ⭐ ⭐</span></td>
-                                    <td>24$ USD</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="button-group">
-                <a href="https://discord.com/invite/EzrtCA7Nmy" target="_blank" rel="noopener noreferrer" class="purchase-button">
-                    ¡Comprar! <img src="https://img.icons8.com/material-rounded/24/ffffff/shopping-cart.png" alt="shopping cart icon" class="icon">
-                </a>
-            </div>
+      <!-- CARD 2: LuckyShoes -->
+      <a href="luckyshoes.html" class="catalog-card card-shoes reveal-up" style="animation-delay:.2s">
+        <div class="catalog-card-number-wrap">
+          <span class="catalog-card-number" data-target="2">2</span>
+          <div class="catalog-card-number-line"><span class="catalog-card-number-label">Zapatillas</span></div>
         </div>
-
-        <div id="contacto" class="page">
-            <button class="nav-link back-button" data-page="home">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/less-than.png" alt="back arrow" class="back-arrow"> Volver
-            </button>
-            <h2>Contacto</h2>
-            <p>
-                Si necesitas soporte, o tienes dudas, únete a mi discord, y recibirás ayuda
-                personalizada por mí.
-            </p>
-            <a href="https://discord.com/invite/EzrtCA7Nmy" target="_blank" rel="noopener noreferrer" class="discord-link">
-                <img src="https://img.icons8.com/color/96/000000/discord--v1.png" alt="Discord logo" class="discord-logo">
-            </a>
+        <div class="catalog-card-bg">👟</div>
+        <div class="catalog-card-glow"></div>
+        <div class="catalog-card-gradient"></div>
+        <div class="catalog-card-content">
+          <span class="catalog-card-icon">👟</span>
+          <h3 class="catalog-card-title">Lucky<span>Shoes</span></h3>
+          <p class="catalog-card-desc">Zapatillas exclusivas y premium. Jordan, Nike, Adidas, New Balance y
+            más.</p>
+          <div class="catalog-card-cta">Explorar Zapatillas <span class="cta-arrow">→</span></div>
         </div>
-    </main>
+      </a>
 
-    <script src="js/script.js"></script>
+      <!-- CARD 3: LuckyParfum -->
+      <a href="luckyparfum.html" class="catalog-card card-parfum reveal-up" style="animation-delay:.3s">
+        <div class="catalog-card-number-wrap">
+          <span class="catalog-card-number" data-target="3">3</span>
+          <div class="catalog-card-number-line"><span class="catalog-card-number-label">Perfumes</span></div>
+        </div>
+        <div class="catalog-card-bg">🧴</div>
+        <div class="catalog-card-glow"></div>
+        <div class="catalog-card-gradient"></div>
+        <div class="catalog-card-content">
+          <span class="catalog-card-icon">🧴</span>
+          <h3 class="catalog-card-title">Lucky<span>Parfum</span></h3>
+          <p class="catalog-card-desc">Perfumes de lujo. Dior, Chanel, Tom Ford, YSL, Creed y más.</p>
+          <div class="catalog-card-cta">Explorar Perfumes <span class="cta-arrow">→</span></div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section reveal-section">
+    <div class="about-container">
+      <span class="section-tag">Nuestra Esencia</span>
+      <h2 class="about-title">Ofrecemos el<br><span>Drip</span> Chileno</h2>
+      <p class="about-text"><strong>Lucky</strong> nació de la búsqueda de una tienda en Chile que ofrezca un catálogo
+        bien hecho, con los mejores productos y precios increíbles.</p>
+      <p class="about-text">Tres catálogos, un solo lugar. Encontrá <span style="color:var(--accent)">ropa
+          urbana</span>, <span style="color:#63b3ed">zapatillas exclusivas</span> y <span
+          style="color:#b794f4">fragancias de lujo</span> — todo seleccionado cuidadosamente para vos.</p>
+      <p class="about-text">¡Explorá nuestros catálogos y descubrí lo que te gusta!</p>
+      <div class="section-divider"></div>
+      <div class="about-stats">
+        <div class="stat-item"><span class="stat-num" data-count="100" data-prefix="+">+100</span><span
+            class="stat-label">Productos</span></div>
+        <div class="stat-item"><span class="stat-num" data-count="3">3</span><span class="stat-label">Catálogos</span>
+        </div>
+        <div class="stat-item"><span class="stat-num" data-count="50" data-prefix="+">+50</span><span
+            class="stat-label">Marcas</span></div>
+        <div class="stat-item"><span class="stat-num">Premium</span><span class="stat-label">Calidad</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section reveal-section">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Lo que dicen</span>
+      <h2 class="section-title"
+        style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,3.8rem);letter-spacing:1px">Nuestros
+        <span>Clientes</span>
+      </h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"La calidad es increíble, exactamente lo que buscaba. El envío fue súper rápido y la
+          atención por WhatsApp excelente."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">Matías R.</div>
+            <div class="testimonial-tag">Cliente desde 2025</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal-up" style="animation-delay:.1s">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Compré unas Jordan y un perfume Tom Ford. Todo impecable, embalaje premium. Ahora
+          siempre compro acá."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S</div>
+          <div>
+            <div class="testimonial-name">Sofía L.</div>
+            <div class="testimonial-tag">Compradora frecuente</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal-up" style="animation-delay:.2s">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"El mejor catálogo de streetwear en Chile sin duda. Variedad increíble y precios
+          justos. 100% recomendado."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">D</div>
+          <div>
+            <div class="testimonial-name">Diego F.</div>
+            <div class="testimonial-tag">Cliente desde 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section reveal-section">
+    <div class="contact-card reveal-up">
+      <span class="section-tag">Contacto</span>
+      <h2 class="contact-title">¿Listo para tu próximo <span>Drip</span>?</h2>
+      <p class="contact-text">Nuestro catálogo es informativo. Para consultar disponibilidad contactanos directamente.
+      </p>
+      <div class="contact-icons">
+        <a href="https://instagram.com/luckydrip" target="_blank" class="contact-icon-btn">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+        </a>
+        <a href="https://wa.me/1234567890" target="_blank" class="contact-icon-btn">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section reveal-section" id="faq">
+    <div class="section-header reveal-up">
+      <span class="section-tag">Preguntas Frecuentes</span>
+      <h2 class="section-title"
+        style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,3.8rem);letter-spacing:1px">Resolvé tus
+        <span>Dudas</span>
+      </h2>
+    </div>
+    <div class="faq-container">
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">¿Cómo hago un pedido? <span
+            class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Explorá nuestro catálogo y cuando encuentres algo que te guste, contactanos por WhatsApp o Instagram. Te
+            confirmamos disponibilidad y coordinamos el envío.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">¿Hacen envíos a todo Chile?
+          <span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Sí, realizamos envíos a todo Chile a través de servicios de courier. El tiempo de entrega varía entre 2-5
+            días hábiles dependiendo de la zona.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">¿Los productos son
+          originales? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Trabajamos con proveedores de confianza para ofrecerte la mejor calidad. Consultanos por detalles
+            específicos de cada producto.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">¿Puedo devolver un producto?
+          <span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Sí, aceptamos devoluciones dentro de las primeras 48 horas de recibido el producto, siempre que esté en las
+            mismas condiciones. Contactanos por DM.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">¿Aceptan transferencia
+          bancaria? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Sí, aceptamos transferencia bancaria y otros métodos de pago. Consultanos por WhatsApp y te damos todas las
+            opciones disponibles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section reveal-section">
+    <div class="newsletter-card reveal-up">
+      <span class="section-tag">Novedades</span>
+      <h2 style="font-family:var(--font-display);font-size:2.2rem;letter-spacing:1px;margin-bottom:.5rem">Enterate de
+        los últimos <span style="color:var(--accent)">Drops</span></h2>
+      <p style="color:var(--text-secondary);font-size:.88rem;max-width:400px;margin:0 auto;line-height:1.6">Sé el
+        primero en conocer nuevos productos y ofertas exclusivas.</p>
+      <form class="newsletter-form"
+        onsubmit="event.preventDefault();this.querySelector('input').value='';showNLToast()">
+        <input class="newsletter-input" type="email" placeholder="Tu email..." required />
+        <button class="newsletter-btn" type="submit">Suscribir</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    title="Volver arriba">↑</button>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-gradient-line"></div>
+    <div class="footer-top">
+      <div class="footer-brand-col">
+        <div class="footer-wordmark">Lucky<span>World</span></div>
+        <p class="footer-desc">Tu destino exclusivo de moda urbana, zapatillas premium y fragancias de lujo.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/luckydrip" target="_blank" class="social-link">Instagram</a>
+          <a href="https://wa.me/1234567890" target="_blank" class="social-link">WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-links-col">
+        <div class="footer-col-title">Catálogos</div>
+        <a href="luckydrip.html" class="footer-link">LuckyDrip</a>
+        <a href="luckyshoes.html" class="footer-link">LuckyShoes</a>
+        <a href="luckyparfum.html" class="footer-link">LuckyParfum</a>
+      </div>
+      <div class="footer-links-col">
+        <div class="footer-col-title">Navegación</div>
+        <a href="#home" class="footer-link">Inicio</a>
+        <a href="#catalogs" class="footer-link">Catálogos</a>
+        <a href="#about" class="footer-link">Nosotros</a>
+        <a href="#contact" class="footer-link">Contacto</a>
+      </div>
+      <div class="footer-links-col">
+        <div class="footer-col-title">Legal</div>
+        <a href="privacidad.html" class="footer-link">Política de Privacidad</a>
+        <span class="footer-link">Solo catálogo informativo</span>
+        <span class="footer-link">No se realizan ventas online</span>
+        <span class="footer-link">Consultas por DM</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <strong>Lucky World</strong> — Streetwear · Sneakers · Parfum</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── PROGRESS BAR ──
+    const navbar = document.getElementById('navbar');
+    const progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+      navbar.classList.toggle('scrolled', scrollTop > 50);
+    });
+
+    // ── THEME ──
+    const themeBtn = document.getElementById('theme-toggle');
+    let isDark = localStorage.getItem('ld_theme') !== 'light';
+    applyTheme();
+    themeBtn.addEventListener('click', () => { isDark = !isDark; localStorage.setItem('ld_theme', isDark ? 'dark' : 'light'); applyTheme(); });
+    function applyTheme() { document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light'); themeBtn.textContent = isDark ? '🌙' : '☀️'; }
+
+    // ── MOBILE NAV ──
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-nav').classList.toggle('open');
+    });
+    function closeMobileNav() { document.getElementById('mobile-nav').classList.remove('open'); }
+
+    // ── SMOOTH SCROLL ──
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href.length > 1) { e.preventDefault(); const el = document.querySelector(href); if (el) el.scrollIntoView({ behavior: 'smooth' }); closeMobileNav(); }
+      });
+    });
+
+    // ── SCROLL REVEAL ──
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal-section, .reveal-up, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+
+    // ── CARD NUMBER COUNTER ANIMATION ──
+    const numberObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const numEl = entry.target;
+          const target = numEl.dataset.target;
+          const targetNum = parseInt(target);
+          let current = 0;
+          const duration = 800;
+          const steps = 15;
+          const interval = duration / steps;
+          numEl.textContent = '00';
+          const counter = setInterval(() => {
+            current++;
+            if (current >= targetNum) {
+              clearInterval(counter);
+              numEl.textContent = target;
+            } else {
+              numEl.textContent = String(current).padStart(2, '0');
+            }
+          }, interval);
+          numberObserver.unobserve(numEl);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.catalog-card-number[data-target]').forEach(el => numberObserver.observe(el));
+
+    // ── STAT & FEATURE COUNTER ANIMATION ──
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const count = parseInt(el.dataset.count);
+          if (isNaN(count)) { statObserver.unobserve(el); return; }
+          const prefix = el.dataset.prefix || '';
+          let current = 0;
+          const duration = 1400;
+          const steps = 35;
+          const increment = count / steps;
+          const interval = duration / steps;
+          el.textContent = prefix + '0';
+          const counter = setInterval(() => {
+            current += increment;
+            if (current >= count) {
+              clearInterval(counter);
+              el.textContent = prefix + count;
+            } else {
+              el.textContent = prefix + Math.floor(current);
+            }
+          }, interval);
+          statObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat-num[data-count], .feature-counter[data-count]').forEach(el => statObserver.observe(el));
+
+    // ── CURSOR GLOW EFFECT ──
+    const cursorGlow = document.createElement('div');
+    cursorGlow.style.cssText = 'position:fixed;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(232,255,0,.04),transparent 70%);pointer-events:none;z-index:9997;transform:translate(-50%,-50%);transition:opacity .3s ease;opacity:0';
+    document.body.appendChild(cursorGlow);
+    document.addEventListener('mousemove', e => {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+      cursorGlow.style.opacity = '1';
+    });
+    document.addEventListener('mouseleave', () => { cursorGlow.style.opacity = '0'; });
+
+    // ── BACK TO TOP ──
+    const btt = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 600);
+    });
+
+    // ── NEWSLETTER TOAST ──
+    function showNLToast() {
+      const c = document.createElement('div');
+      c.style.cssText = 'position:fixed;bottom:28px;right:28px;z-index:9999;background:var(--bg-card);border:1px solid var(--accent);border-radius:12px;padding:14px 20px;color:var(--accent);font-size:.85rem;font-weight:600;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:toastIn .3s ease both';
+      c.textContent = '✅ ¡Suscripción exitosa!';
+      document.body.appendChild(c);
+      setTimeout(() => { c.style.opacity = '0'; c.style.transition = 'opacity .3s'; setTimeout(() => c.remove(), 300); }, 3000);
+    }
+
+    // ── HERO PARTICLES CANVAS ──
+    (function () {
+      const canvas = document.getElementById('hero-particles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+      function resize() { w = canvas.width = canvas.parentElement.offsetWidth; h = canvas.height = canvas.parentElement.offsetHeight; }
+      resize(); window.addEventListener('resize', resize);
+      for (let i = 0; i < 60; i++) {
+        particles.push({ x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.5 + .5, dx: (Math.random() - .5) * .3, dy: (Math.random() - .5) * .3, a: Math.random() * .3 + .1 });
+      }
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(232,255,0,${p.a})`;
+          ctx.fill();
+          p.x += p.dx; p.y += p.dy;
+          if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
+          if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+        });
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(232,255,0,${.04 * (1 - dist / 120)})`;
+              ctx.lineWidth = .5;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    // ── PARALLAX ──
+    window.addEventListener('scroll', () => {
+      const hero = document.querySelector('.hero-content');
+      if (hero) hero.style.transform = `translateY(${window.scrollY * 0.15}px)`;
+    });
+  </script>
 </body>
+
 </html>

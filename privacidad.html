@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad — LuckyDrip</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="images/Shop/favicon.png" type="image/png" />
+  <style>
+    .privacy-page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 120px 2rem 80px;
+    }
+
+    .privacy-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 3rem;
+      transition: color .2s;
+    }
+
+    .privacy-back:hover {
+      color: var(--accent);
+    }
+
+    .privacy-hero {
+      margin-bottom: 3rem;
+    }
+
+    .privacy-hero .section-tag {
+      margin-bottom: .75rem;
+    }
+
+    .privacy-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: 1px;
+      color: var(--text-primary);
+      line-height: 1.05;
+    }
+
+    .privacy-title span {
+      color: var(--accent);
+    }
+
+    .privacy-date {
+      font-size: .75rem;
+      color: var(--text-muted);
+      margin-top: .75rem;
+    }
+
+    .privacy-section {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .privacy-section:last-child {
+      border-bottom: none;
+    }
+
+    .privacy-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: .5px;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .privacy-section p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: .9rem;
+      margin-bottom: .85rem;
+    }
+
+    .privacy-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .privacy-section strong {
+      color: var(--text-primary);
+    }
+
+    .privacy-highlight {
+      background: var(--accent-glow);
+      border: 1px solid rgba(232, 255, 0, .15);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: .82rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <nav class="navbar scrolled" id="navbar">
+    <a href="index.html" class="navbar-logo">
+      <img src="images/Shop/logo_nav.png" alt="LuckyDrip" class="navbar-logo-img" />
+    </a>
+    <div class="nav-links">
+      <a href="index.html#home" class="nav-link">Inicio</a>
+      <a href="index.html#catalog-section" class="nav-link">Catálogo</a>
+      <a href="index.html#contact" class="nav-link">Contacto</a>
+    </div>
+    <div class="navbar-right">
+      <button class="theme-toggle" id="theme-toggle" title="Cambiar tema">🌙</button>
+    </div>
+  </nav>
+
+  <div class="privacy-page">
+    <a href="index.html" class="privacy-back">← Volver al inicio</a>
+
+    <div class="privacy-hero">
+      <span class="section-tag">Legal</span>
+      <h1 class="privacy-title">Política de <span>Privacidad</span></h1>
+      <p class="privacy-date">Última actualización: Enero 2025</p>
+    </div>
+
+    <div class="privacy-highlight">
+      📋 LuckyDrip es un catálogo informativo. No realizamos ventas online ni procesamos pagos digitales. Toda consulta
+      se gestiona vía Instagram o WhatsApp.
+    </div>
+
+    <div class="privacy-section">
+      <h2>1. Información que recopilamos</h2>
+      <p>LuckyDrip no recopila datos personales directamente a través de este sitio web. No tenemos formularios de
+        registro, cuentas de usuario, ni sistemas de checkout.</p>
+      <p>Al contactarnos por <strong>Instagram</strong> o <strong>WhatsApp</strong>, esas plataformas aplican sus
+        propias políticas de privacidad, independientes de LuckyDrip.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>2. Cookies y almacenamiento local</h2>
+      <p>Este sitio utiliza <strong>almacenamiento local del navegador (localStorage)</strong> exclusivamente para
+        guardar tus preferencias de tema (claro/oscuro) y el historial de productos vistos recientemente. Estos datos
+        nunca se envían a ningún servidor externo.</p>
+      <p>No utilizamos cookies de seguimiento, publicidad, ni analítica de terceros.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>3. Uso de la información</h2>
+      <p>La información de navegación permanece en tu dispositivo. No compartimos, vendemos ni transferimos ningún dato
+        personal con terceros.</p>
+      <p>Si nos contactás voluntariamente por mensajería, utilizaremos esa información únicamente para responder tu
+        consulta.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>4. Redes sociales</h2>
+      <p>Este sitio incluye enlaces a <strong>Instagram</strong>, <strong>WhatsApp</strong> y <strong>TikTok</strong>.
+        Al acceder a esas plataformas, quedás sujeto a sus políticas de privacidad propias. LuckyDrip no tiene control
+        sobre el procesamiento de datos que realizan esas plataformas.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>5. Seguridad</h2>
+      <p>Dado que no recopilamos datos personales a través de este sitio, no hay riesgo de exposición de información
+        sensible en nuestros sistemas.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>6. Menores de edad</h2>
+      <p>Este sitio no está dirigido a menores de 13 años. No recopilamos intencionalmente información de menores. Si
+        detectamos que se ha recopilado información de un menor sin consentimiento parental, la eliminaremos de
+        inmediato.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>7. Cambios en esta política</h2>
+      <p>Nos reservamos el derecho de actualizar esta política en cualquier momento. Los cambios serán efectivos al
+        publicarse en esta página, con la fecha de actualización actualizada.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h2>8. Contacto</h2>
+      <p>Si tenés alguna pregunta sobre esta política de privacidad, podés contactarnos por:</p>
+      <p>
+        <strong>Instagram:</strong> <a href="https://instagram.com/luckydrip"
+          style="color:var(--accent);text-decoration:none">@luckydrip</a><br>
+        <strong>WhatsApp:</strong> <a href="https://wa.me/1234567890"
+          style="color:var(--accent);text-decoration:none">+54 XXX XXXXXXX</a>
+      </p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <p>© 2025 <strong>LuckyDrip</strong> — <a href="privacidad.html"
+          style="color:var(--accent);text-decoration:none">Política de Privacidad</a></p>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('progress-bar').style.width = (scrollTop / docHeight * 100) + '%';
+    });
+    const themeBtn = document.getElementById('theme-toggle');
+    let isDark = localStorage.getItem('ld_theme') !== 'light';
+    function applyTheme() {
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      themeBtn.textContent = isDark ? '🌙' : '☀️';
+    }
+    applyTheme();
+    themeBtn.addEventListener('click', () => {
+      isDark = !isDark;
+      localStorage.setItem('ld_theme', isDark ? 'dark' : 'light');
+      applyTheme();
+    });
+  </script>
+</body>
+
+</html>

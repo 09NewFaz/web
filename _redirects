@@ -1,0 +1,3 @@
+# Redirigir /admin al nuevo /dashboard
+/admin    /dashboard    301
+/admin.html    /dashboard    301
